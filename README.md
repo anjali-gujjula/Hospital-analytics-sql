@@ -41,14 +41,14 @@ illness severity, age group risks, and hospital performance.
 
 ## 📁 Project Structure
 -hospital-analytics-sql
-        -hos.sql            #Main SQL file with all queries
-        -README.md          #Project documentation
-        -dashboard.png      #PowerBI dashboard screenshot
+        1. hos.sql            #Main SQL file with all queries
+        2. README.md          #Project documentation
+        3. dashboard.png      #PowerBI dashboard screenshot
 ## 🚀 How to Run
 1. Import train.csv into MySQL using load_data.py
 2. Run hos.sql in MySQL Workbench
 3. Open Hospital_Analytics_Dashboard.pbix in PowerBI
 
 ## 📷 Dashboard Preview
-[Screenshot](dashboard.png)
+[dashboard](dashboard.png)
 
