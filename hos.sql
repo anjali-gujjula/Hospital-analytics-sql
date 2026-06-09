@@ -6,6 +6,7 @@
 
 CREATE DATABASE hospital_analytics;
 USE hospital_analytics;
+SET profiling=1;
 CREATE TABLE train_data(
 	case_id INT,
     Hospital_code INT,
@@ -74,7 +75,7 @@ GROUP BY Department
 ORDER BY total_patients DESC;
 
 -- Query 2:Illness severity breakdown
--- Business problem :How serious are the coming into the hospital?
+-- Business problem :How serious are the cases coming into the hospital?
 
 SELECT 
 		Severity_of_Illness,
@@ -186,7 +187,7 @@ ORDER BY avg_deposit DESC;
 -- Procedure 1:Daily Department Summary
 -- Business Use:Hospital manager runs this every morning to see department load
 
-DELIMITER $$
+
 			CREATE PROCEDURE department_load()
             BEGIN
 					SELECT 
@@ -197,14 +198,13 @@ DELIMITER $$
                     FROM train_data 
                     GROUP BY Department
                     ORDER BY total_patients DESC;
-			END $$
-
+			END 
 CALL department_load;
 
--- Procedure 2 : Ptient Severity Report
+-- Procedure 2 : Patient Severity Report
 -- Business Use: Doctor wants to see how many extreme cases each age group has with their average deposit
 
-DELIMITER $$
+
 			CREATE PROCEDURE Severity_report()
             BEGIN
 					SELECT *,
@@ -218,7 +218,7 @@ DELIMITER $$
                     WHERE Severity_of_Illness='Extreme' 
                     GROUP BY Age 
                     ORDER BY extreme_cases DESC) AS temp ;
-			END $$
+			END 
 CALL Severity_report;
 
 -- Procedure 3: Hospital performance report
@@ -251,7 +251,7 @@ CREATE INDEX idx_severity ON train_data(Severity_of_Illness(50));
 CREATE INDEX idx_age ON train_data(Age(20));
 CREATE INDEX idx_hospital_code ON train_data(Hospital_code);
 CREATE INDEX idx_admission_deposit ON train_data(Admission_Deposit);
-SET profiling=1;
+
 EXPLAIN 
 		SELECT 
 			Department,
