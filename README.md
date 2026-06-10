@@ -40,17 +40,20 @@ illness severity, age group risks, and hospital performance.
 - Aggregation Functions
 
 ## 📁 Project Structure
+```
 hospital-analytics-sql/
 │
 ├── hos.sql          # Main SQL file with all queries
 ├── load_data.py     # Python data loading script
 ├── README.md        # Project documentation
 └── dashboard.png    # Power BI dashboard screenshot
+```
+
 ## 🚀 How to Run
 1. Import train.csv into MySQL using load_data.py
 2. Run hos.sql in MySQL Workbench
 3. Open Hospital_Analytics_Dashboard.pbix in PowerBI
 
 ## 📷 Dashboard Preview
-[Dashboard](dashboard.png)
+![Dashboard](dashboard.png)
 
